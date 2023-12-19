@@ -9,16 +9,14 @@ class Cliente extends Model
 {
     use HasFactory;
 
-    protected $table = 'cliente_online';
+    protected $table = 'clientes';
         protected $fillable = [
         'nombre',
         'apellido_paterno',
         'apellido_materno',
         'correo',
-        'correo_verificacion',
-        'contrasenia',
         'foto_perfil',
-        'foto_progreso'];
+        ];
 
         public function setPasswordAttribute($pass){
             $this->attributes['password'] = bcrypt($pass);

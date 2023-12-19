@@ -17,10 +17,7 @@ return new class extends Migration
             $table->string('apellido_paterno', 50);
             $table->string('apellido_materno', 50);
             $table->string('correo' , 255)->unique();
-            $table->datetime('correo_verificacion',6)->nullable();
-            $table->string('contrasenia', 255);
             $table->string('foto_perfil', 100);
-            $table->string('foto_progreso', 100)->nullable();
             $table->timestamps();
         });
     }

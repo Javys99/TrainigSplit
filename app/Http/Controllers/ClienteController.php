@@ -4,6 +4,7 @@ namespace App\Http\Controllers;
 
 use App\Models\Cliente;
 use Illuminate\Http\Request;
+use Illuminate\Support\Facades\Storage;
 
 class ClienteController extends Controller
 {
@@ -12,7 +13,8 @@ class ClienteController extends Controller
      */
     public function index()
     {
-        return view('cliente.index');
+        $datos['clientes']=Cliente::all();
+        return view('cliente.index',$datos);
     }
 
     /**
@@ -29,33 +31,31 @@ class ClienteController extends Controller
     public function store(Request $request)
     {
         $campos=[
-            'nombre' => 'required|string|max:100',
-            'apellido_paterno' => 'required|string|max:100',
-            'apellido_materno' => 'required|string|max:100',
-            'correo' => 'required|unique:cliente_online,correo|email',
-            'contrasenia' => 'required|min:8',
-            'contrasenia_confirmacion' => 'required|same:contrasenia',
-            'foto_perfil' => 'required|max:10000|mimes:jpeg,png,jpg',
+            'nombre'=>'required|string|max:100',
+            'apellido_paterno'=>'required|string|max:100',
+            'apellido_materno'=>'required|string|max:100',
+            'correo'=>'required|email',
+            'foto_perfil'=>'required|max:10000|mimes:jpeg,png,jpg',
         ];
         $mensaje=[
             'required'=>'El :attribute es requerido',
-            'correo.unique'=>'Correo ya registrado',
-            'contrasenia.min'=>'Ingresa una contrasenia valida',
-            'contrasenia_confirmacion.same'=>'Las contrasenia no coinciden',
-            'foto_perfil.required'=>'La foto es requerida'
+            'foto.required'=>'La foto es requerida'
+
         ];
 
-        
-        $validaciones= validator($request->all(),$campos,$mensaje);
-        if($validaciones->fails()){
-            return $validaciones->errors()->all();
-        }
+        $this->validate($request,$campos,$mensaje);
 
-        $datosClienteonline = request()->except('_token');
-        if($request->hasFile('foto_perfil')){
-            $datosClienteonline['foto_perfil']=$request->file('foto_perfil')->store('uploads','public');
-        }
-        Cliente::create($datosClienteonline);
+    $datosCliente = $request->except('_token');
+
+    if($request->hasFile('foto_perfil')){
+        $datosCliente['foto_perfil']=$request->file('foto_perfil')->store('uploads','public');
+    }
+
+    Cliente::create($datosCliente);
+    
+
+    return redirect('cliente')->with('mensaje', 'Cliente agregado con exito');
+
     }
 
     /**
@@ -65,28 +65,73 @@ class ClienteController extends Controller
     {
         //
     }
-
+    public function info($idCliente)
+    {
+        $cliente=Cliente::findOrFail($idCliente);
+        return view('cliente.info');
+    }
     /**
      * Show the form for editing the specified resource.
      */
-    public function edit(Cliente $cliente)
+    public function edit( $id)
     {
-        //
+        $cliente=Cliente::findOrFail($id);
+        return view('cliente.edit', compact ('cliente') );
     }
 
     /**
      * Update the specified resource in storage.
      */
-    public function update(Request $request, Cliente $cliente)
+    public function update(Request $request, $id)
     {
-        //
+        $campos=[
+            'nombre'=>'required|string|max:100',
+            'apellido_paterno'=>'required|string|max:100',
+            'apellido_materno'=>'required|string|max:100',
+            'correo'=>'required|email',
+            
+        ];
+        $mensaje=[
+            'required'=>'El :attribute es requerido',
+           
+
+        ];
+
+        if($request->hasFile('foto')){
+            
+            $campos=['foto'=>'required|max:10000|mimes:jpeg,png,jpg'];
+            $mensaje=['foto.required'=>'La foto es requerida'];
+
+        }
+
+        $this->validate($request,$campos,$mensaje);
+
+
+
+        $datosCliente = request()->except(['_token','_method']);
+
+        if($request->hasFile('foto')){
+            $cliente=Cliente::findOrFail($id);
+            Storage::delete(['public/'.$cliente->foto]);
+            $datosCliente['foto']=$request->file('foto')->store('uploads','public');
+        }
+
+        Cliente::where('id','=',$id)->update($datosCliente);
+
+        $cliente=Cliente::findOrFail($id);
+        return redirect('cliente')->with('mensaje','Cliente Modificado');
     }
 
     /**
      * Remove the specified resource from storage.
      */
-    public function destroy(Cliente $cliente)
+    public function destroy($id)
     {
-        //
+        $cliente=Cliente::findOrFail($id);
+        if(Storage::delete('public/'.$cliente->foto_perfil)){
+            Cliente::destroy($id);
+        }
+        return redirect('cliente');
+
     }
 }
