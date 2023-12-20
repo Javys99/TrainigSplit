@@ -25,11 +25,11 @@
 <input type="text" name="correo" value="{{ isset($cliente->correo)?$cliente->correo:old('correo') }}" id="correo">
 <br>
 
-<label for="foto">Foto</label>
-@if(isset($cliente->Foto))
-<img class="img-thumbnail img-fluid" src="{{ asset('storage').'/'.$cliente->foto }}" width="200" alt="">
+<label for="foto_perfil">Foto</label>
+@if(isset($cliente->foto_perfil))
+<img src="{{ asset('storage').'/'.$cliente->foto_perfil }}" width="200" alt="">
 @endif
-<input type="file" name="foto_perfil" value="" id="foto_perfil">
+<input type="file" name="foto_perfil" id="foto_perfil">
 <br>
 <input type="submit" value="Guardar" id="guardar">
 </form>

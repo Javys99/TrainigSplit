@@ -18,7 +18,8 @@ class Cliente extends Model
         'foto_perfil',
         ];
 
-        public function setPasswordAttribute($pass){
-            $this->attributes['password'] = bcrypt($pass);
-        }
+    public function planes()
+    {
+        return $this->belongsToMany(Plan::class,'clientes');
+    }
 }

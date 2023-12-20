@@ -2,18 +2,15 @@
 
 namespace App\Http\Controllers;
 
-use App\Models\Cliente;
+use App\Models\User;
 use Illuminate\Http\Request;
 use Illuminate\Support\Facades\Storage;
 
-class ClienteController extends Controller
+class UserController extends Controller
 {
-    /**
-     * Display a listing of the resource.
-     */
     public function index()
     {
-        $datos['clientes']=Cliente::all();
+        $datos['clientes']=User::all();
         return view('cliente.index',$datos);
     }
 
@@ -51,7 +48,7 @@ class ClienteController extends Controller
         $datosCliente['foto_perfil']=$request->file('foto_perfil')->store('uploads','public');
     }
 
-    Cliente::create($datosCliente);
+    User::create($datosCliente);
     
 
     return redirect('cliente')->with('mensaje', 'Cliente agregado con exito');
@@ -61,13 +58,13 @@ class ClienteController extends Controller
     /**
      * Display the specified resource.
      */
-    public function show(Cliente $cliente)
+    public function show(User $cliente)
     {
         //
     }
     public function info($idCliente)
     {
-        $cliente=Cliente::findOrFail($idCliente);
+        $cliente=User::findOrFail($idCliente);
         return view('cliente.info');
     }
     /**
@@ -75,7 +72,7 @@ class ClienteController extends Controller
      */
     public function edit( $id)
     {
-        $cliente=Cliente::findOrFail($id);
+        $cliente=User::findOrFail($id);
         return view('cliente.edit', compact ('cliente') );
     }
 
@@ -111,14 +108,14 @@ class ClienteController extends Controller
         $datosCliente = request()->except(['_token','_method']);
 
         if($request->hasFile('foto_perfil')){
-            $cliente=Cliente::findOrFail($id);
+            $cliente=User::findOrFail($id);
             Storage::delete(['public/'.$cliente->foto_perfil]);
             $datosCliente['foto_perfil']=$request->file('foto_perfil')->store('uploads','public');
         }
 
-        Cliente::where('id','=',$id)->update($datosCliente);
+        User::where('id','=',$id)->update($datosCliente);
 
-        $cliente=Cliente::findOrFail($id);
+        $cliente=User::findOrFail($id);
         return redirect('cliente')->with('mensaje','Cliente Modificado');
     }
 
@@ -127,9 +124,9 @@ class ClienteController extends Controller
      */
     public function destroy($id)
     {
-        $cliente=Cliente::findOrFail($id);
+        $cliente=User::findOrFail($id);
         if(Storage::delete('public/'.$cliente->foto_perfil)){
-            Cliente::destroy($id);
+            User::destroy($id);
         }
         return redirect('cliente');
 

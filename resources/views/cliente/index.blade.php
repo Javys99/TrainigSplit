@@ -26,7 +26,7 @@
                 <td>{{ $cliente->id }}</td>
     
                 <td>
-                <img src="{{ asset('storage').'/'.$cliente->foto_perfil }}" width="100" alt="">
+                <img src="{{ asset('storage').'/'.$cliente->foto_perfil }}" width="50" alt="">
                 
                 </td>
     

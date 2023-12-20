@@ -1,7 +1,9 @@
 <?php
 
 use App\Http\Controllers\ClienteController;
+use App\Http\Controllers\UserController;
 use App\Models\Cliente;
+use App\Models\User;
 use Illuminate\Support\Facades\Route;
 
 /*
@@ -19,5 +21,9 @@ Route::get('/', function () {
     return view('welcome');
 });
 
-Route::resource('cliente', ClienteController::class);
-Route::get('/cliente/{idCliente}/info', [ClienteController::class,'info'])->name('cliente.info');
+Route::resource('cliente', UserController::class);
+Route::get('/cliente/{idCliente}/info', [UserController::class,'info'])->name('cliente.info');
+
+Route::get('/example', function () {
+    return view('example');
+});

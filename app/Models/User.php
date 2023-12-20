@@ -18,11 +18,17 @@ class User extends Authenticatable
      * @var array<int, string>
      */
     protected $fillable = [
-        'name',
-        'email',
-        'password',
+        'nombre',
+        'apellido_paterno',
+        'apellido_materno',
+        'correo',
+        'foto_perfil',
     ];
 
+    public function planes()
+    {
+        return $this->belongsToMany(Plan::class,'clientes');
+    }
     /**
      * The attributes that should be hidden for serialization.
      *
