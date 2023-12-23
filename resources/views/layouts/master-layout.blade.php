@@ -9,7 +9,7 @@
     <meta name="viewport"
         content="width=device-width, initial-scale=1.0, user-scalable=no, minimum-scale=1.0, maximum-scale=1.0" />
 
-    <title>Training Split | {{ $title }}</title>
+    <title>Training Split| {{ $title }}</title>
 
     <meta name="description" content="" />
     <!-- Favicon -->
@@ -39,9 +39,43 @@
     <!-- Layout wrapper -->
     <div class="layout-wrapper layout-content-navbar">
         <div class="layout-container">
-
+            <x-layouts.aside-bar/>
+            <div class="layout-page"> 
+                <x-layouts.nav-bar/>
+                <div class="content-wrapper">
+                    <!-- Content -->
+        
+                    <div class="container-xxl flex-grow-1 container-p-y">
+                        <h4 class="fw-bold py-3 mb-4"><span class="text-muted fw-light"></span>{{ $title }}</h4>
+                        <div class="card">
+                        <h5 class="card-header">{{ $title }}</h5>
+                        {{$slot}}
+                        </div>
+                    </div>
+                </div>
+            </div>
         </div>
         <div class="layout-overlay layout-menu-toggle"></div>
     </div>
+    <script src="{{asset('assets/vendor/libs/jquery/jquery.js')}}"></script>
+    <script src="{{asset('assets/vendor/libs/popper/popper.js')}}"></script>
+    <script src="{{asset('assets/vendor/js/bootstrap.js')}}"></script>
+    <script src="{{asset('assets/vendor/libs/perfect-scrollbar/perfect-scrollbar.js')}}"></script>
+
+    <script src="{{asset('assets/vendor/js/menu.js')}}"></script>
+    <!-- endbuild -->
+
+    <!-- Vendors JS -->
+    <script src="{{asset('assets/vendor/libs/apex-charts/apexcharts.js')}}"></script>
+
+    <!-- Main JS -->
+    <script src="{{asset('assets/js/main.js')}}"></script>
+
+    <!-- Page JS -->
+    <script src="{{asset('assets/js/dashboards-analytics.js')}}"></script>
+
+    <!-- Place this tag in your head or just before your close body tag. -->
+    <script async defer src="https://buttons.github.io/buttons.js"></script>
 </body>
+
 </html>

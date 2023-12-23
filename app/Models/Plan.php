@@ -15,6 +15,6 @@ class Plan extends Model
 
     public function cliente()
     {
-        return $this->hasMany(User::class);
+        return $this->hasMany(User::class,'cliente_id');
     }
 }

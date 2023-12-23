@@ -1,6 +1,7 @@
 <?php
 
 use App\Http\Controllers\ClienteController;
+use App\Http\Controllers\HomeController;
 use App\Http\Controllers\UserController;
 use App\Models\Cliente;
 use App\Models\User;
@@ -23,7 +24,11 @@ Route::get('/', function () {
 
 Route::resource('cliente', UserController::class);
 Route::get('/cliente/{idCliente}/info', [UserController::class,'info'])->name('cliente.info');
-
+Route::get('/dashboard', [HomeController::class,'dashboard'])->name('dashboard.dashboard');
 Route::get('/example', function () {
     return view('example');
+});
+
+Route::get('/planes', function () {
+    return view('dashboard.plan');
 });
