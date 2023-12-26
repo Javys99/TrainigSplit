@@ -44,13 +44,16 @@
                 <x-layouts.nav-bar/>
                 <div class="content-wrapper">
                     <!-- Content -->
-        
+                    <div class="d-flex justify-content-end">
+                        <a href="{{ route('cliente.create') }}" class="btn btn-success">Agregar Cliente</a>
+                    </div>
                     <div class="container-xxl flex-grow-1 container-p-y">
                         <h4 class="fw-bold py-3 mb-4"><span class="text-muted fw-light"></span>{{ $title }}</h4>
                         <div class="card">
                         <h5 class="card-header">{{ $title }}</h5>
                         {{$slot}}
                         </div>
+                       
                     </div>
                 </div>
             </div>
