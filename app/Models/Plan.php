@@ -11,10 +11,11 @@ class Plan extends Model
     protected $table = 'plan';
         protected $fillable = [
         'plan',
+        'user_id'
         ];
 
     public function cliente()
     {
-        return $this->hasMany(User::class,'cliente_id');
+        return $this->hasMany(User::class,'user_id');
     }
 }
