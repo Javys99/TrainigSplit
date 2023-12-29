@@ -1,4 +1,7 @@
 <x-layouts.master-layout title="Clientes">
+    <div class="d-flex justify-content-end " style="margin-right:1em;">
+        <a href="{{ route('cliente.create') }}" class="btn btn-success">Agregar Cliente</a>
+    </div>
     <table class="table table-light">
         <thead class="thead-light">
             <tr>
