@@ -27,3 +27,6 @@ Route::resource('cliente', UserController::class);
 Route::get('/cliente/{idCliente}/info', [UserController::class,'info'])->name('cliente.info');
 Route::get('/dashboard', [HomeController::class,'dashboard'])->name('dashboard.dashboard');
 Route::resource('plan', PlanController::class);
+
+//show view for plans individual 
+Route::get('/plan/{idPlan}/info', [PlanController::class,'info'])->name('plan.info'); 

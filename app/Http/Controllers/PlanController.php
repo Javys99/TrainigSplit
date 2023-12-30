@@ -3,20 +3,31 @@
 namespace App\Http\Controllers;
 
 use App\Models\Plan;
+use App\Models\User;
 use Illuminate\Http\Request;
 
 class PlanController extends Controller
 {
     public function index()
     {
-        $datos['plan']=Plan::all();
-        return view('plan.index',$datos);
+        $plans = Plan::with('user')->get();
+        return view('plan.index')->with('plans', $plans);
     }
 
     public function create()
-    {
-        return view('plan.create');
+    {   
+        $users = User::all();
+        return view('plan.create')->with('users', $users);
     }
+
+    public function info($id)
+    {
+        $plan = Plan::findOrFail($id);
+        
+        return view('plan.info', compact('plan'));
+       
+    }
+
 
     public function store(Request $request)
     {

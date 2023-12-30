@@ -10,8 +10,8 @@ class UserController extends Controller
 {
     public function index()
     {
-        $datos['clientes']=User::all();
-        return view('cliente.index',$datos);
+        $users = User::all();
+        return view('cliente.index')->with('users', $users);
     }
 
     /**

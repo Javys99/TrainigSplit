@@ -14,8 +14,8 @@ class Plan extends Model
         'user_id'
         ];
 
-    public function cliente()
-    {
-        return $this->hasMany(User::class,'user_id');
-    }
+        public function user()
+        {
+            return $this->belongsTo(User::class);
+        }
 }

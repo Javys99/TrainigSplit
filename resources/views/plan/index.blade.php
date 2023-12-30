@@ -2,57 +2,32 @@
     <table class="table table-light">
         <thead class="thead-light">
             <tr>
-                <th>#</th>
-                <th>Foto</th>
-                <th>Nombre</th>
-                <th>Apellido Paterno</th>
-                <th>Apellido Materno</th>
-                <th>Correo</th>
+                <th>ID</th>
+                <th>Usuario</th>
+                <th>Plan</th>
                 <th>Acciones</th>
             </tr>
         </thead>
-    
         <tbody>
-            @foreach($clientes as $cliente)
+            @foreach($plans as $plan)
             <tr>
-                <td>{{ $cliente->id }}</td>
-    
+                <td>{{ $plan->id }}</td>
+                <td>{{ $plan->user->nombre }}</td>
+                <td>{!! $plan->plan !!}</td>
                 <td>
-                <img src="{{ asset('storage').'/'.$cliente->foto_perfil }}" width="50" alt="">
-                
+                    <a href="{{ url('/plan/'.$plan->id.'/edit' ) }}" >
+                        Editar
+                    </a>
+                    |
+                    <form action="{{ url('/plan/'.$plan->id ) }}" method="post">
+                        @csrf
+                        {{ method_field('DELETE') }}
+                        <input type="submit" onclick="return confirm ('¿Quieres borrar?')" value="Borrar">
+                    </form>
                 </td>
-    
-    
-                <td>{{ $cliente->nombre }}</td>
-                <td>{{ $cliente->apellido_paterno }}</td>
-                <td>{{ $cliente->apellido_materno }}</td>
-                <td>{{ $cliente->correo }}</td>
-                <td>
-                
-                <a href="{{ url('/cliente/'.$cliente->id.'/info') }}">
-                Info
-                </a>
-                
-                | 
-    
-                <a href="{{ url('/cliente/'.$cliente->id.'/edit' ) }}" >
-                Editar
-                </a>
-    
-                |
-                   
-                <form action="{{ url('/cliente/'.$cliente->id ) }}" method="post">
-                @csrf
-                {{ method_field('DELETE') }}
-                <input type="submit" onclick="return confirm ('¿Quieres borrar?')" value="Borrar">
-    
-                </form>
-            
-            </td>
             </tr>
             @endforeach
         </tbody>
-    
     </table>
 </x-layouts.master-layout>
   

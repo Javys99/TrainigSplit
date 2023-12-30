@@ -27,8 +27,10 @@ class User extends Authenticatable
 
     public function planes()
     {
-        return $this->belongsToMany(Plan::class,'users');
+        return $this->hasMany(Plan::class);
     }
+
+
     /**
      * The attributes that should be hidden for serialization.
      *

@@ -16,35 +16,35 @@
         </thead>
     
         <tbody>
-            @foreach($clientes as $cliente)
+            @foreach($users as $user)
             <tr>
-                <td>{{ $cliente->id }}</td>
+                <td>{{ $user->id }}</td>
     
                 <td>
-                <img src="{{ asset('storage').'/'.$cliente->foto_perfil }}" width="50" alt="">
+                <img src="{{ asset('storage').'/'.$user->foto_perfil }}" width="50" alt="">
                 
                 </td>
     
     
-                <td>{{ $cliente->nombre }}</td>
-                <td>{{ $cliente->apellido_paterno }}</td>
-                <td>{{ $cliente->apellido_materno }}</td>
-                <td>{{ $cliente->correo }}</td>
+                <td>{{ $user->nombre }}</td>
+                <td>{{ $user->apellido_paterno }}</td>
+                <td>{{ $user->apellido_materno }}</td>
+                <td>{{ $user->correo }}</td>
                 <td>
                 
-                <a href="{{ url('/cliente/'.$cliente->id.'/info') }}">
+                <a href="{{ url('/cliente/'.$user->id.'/info') }}">
                 Info
                 </a>
                 
                 | 
     
-                <a href="{{ url('/cliente/'.$cliente->id.'/edit' ) }}" >
+                <a href="{{ url('/cliente/'.$user->id.'/edit' ) }}" >
                 Editar
                 </a>
     
                 |
                    
-                <form action="{{ url('/cliente/'.$cliente->id ) }}" method="post">
+                <form action="{{ url('/cliente/'.$user->id ) }}" method="post">
                 @csrf
                 {{ method_field('DELETE') }}
                 <input type="submit" onclick="return confirm ('¿Quieres borrar?')" value="Borrar">
