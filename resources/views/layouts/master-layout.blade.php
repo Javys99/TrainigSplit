@@ -53,8 +53,10 @@
                         </div>
                        
                     </div>
+                  <x-layouts.footer/>  
                 </div>
             </div>
+
         </div>
         <div class="layout-overlay layout-menu-toggle"></div>
     </div>

@@ -11,7 +11,7 @@
                 </select>
             </div>
             <div>
-                <label for="exampleFormControlTextarea1" class="form-label">Plan:</label>
+                <label for="plan" class="form-label">Plan:</label>
                 <textarea id="myeditorinstance" name="plan" id="plan" class="form-control" rows="3"></textarea>
             </div>
         </div>
