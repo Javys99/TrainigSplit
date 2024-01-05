@@ -15,6 +15,11 @@
                 <td>{{ $plan->user->nombre }}</td>
                 <td>{!! $plan->plan !!}</td>
                 <td>
+                    <a href="{{ url('/plan/'.$plan->id.'/info') }}">
+                        Info
+                        </a>
+                        
+                        | 
                     <a href="{{ url('/plan/'.$plan->id.'/edit' ) }}" >
                         Editar
                     </a>

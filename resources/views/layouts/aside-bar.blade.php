@@ -148,17 +148,17 @@
         <ul class="menu-sub">
           <li class="menu-item">
             <a href="{{route('plan.create')}}" class="menu-link">
-              <div data-i18n="Account">Plan</div>
+              <div data-i18n="Account">Crear plan</div>
             </a>
           </li>
           <li class="menu-item">
-            <a href="pages-account-settings-notifications.html" class="menu-link">
-              <div data-i18n="Notifications">Mesociclo</div>
+            <a href="{{route('plan.index')}}" class="menu-link">
+              <div data-i18n="Notifications">Ver planes</div>
             </a>
           </li>
           <li class="menu-item">
-            <a href="pages-account-settings-connections.html" class="menu-link">
-              <div data-i18n="Connections">Connections</div>
+            <a href="" class="menu-link">
+              <div data-i18n="Connections">Mesociclo</div>
             </a>
           </li>
         </ul>
