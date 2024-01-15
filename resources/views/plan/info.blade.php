@@ -28,7 +28,7 @@
                     id="uploadedAvatar"
                   />
                   <div class="mb-3 col-md-6">
-                    <label for="firstName" class="form-label">Numero de ID: {{$plan -> id}}</label>
+                    <label for="firstName" class="form-label">Numero de ID: {{$plan -> user -> id}}</label>
                     <br>
                     <label for="firstName" class="form-label">{{$plan -> user -> nombre}} {{$plan -> user -> apellido_paterno}} {{$plan -> user -> apellido_materno}}</label>
                   </div>
@@ -36,40 +36,18 @@
               </div>
               <hr class="my-0" />
               <div class="card-body">
-                <form id="formAccountSettings" method="POST" onsubmit="return false">
+    
                   <div class="row">
                     <div>
                       <label for="plan" class="form-label">Plan:</label>
-                      <textarea id="myeditorinstance" name="plan" id="plan" class="form-control" rows="3"> {!!$plan -> plan!!}</textarea>
+                       {!!$plan -> plan!!}
                   </div>
                   </div>
-                  <div class="mt-2">
-                    <button type="submit" class="btn btn-primary me-2">Guardar cambios</button>
-                    <button type="reset" class="btn btn-outline-secondary">Cancelar</button>
-                  </div>
-                </form>
               </div>
               <!-- /Account -->
             </div>
           </div>
         </div>
       </div>
-      <script src="https://cdn.tiny.cloud/1/{{ config('app.tinymcekey') }}/tinymce/6/tinymce.min.js" referrerpolicy="origin">
-      </script>
-      <script>
-          tinymce.init({
-              selector: 'textarea#myeditorinstance', 
-              plugins: ' lists codesample',
-              toolbar: 'undo redo | code | codesample | blocks | bold italic | alignleft aligncenter alignright | indent outdent | bullist numlist ',
-              codesample_languages: [{
-                      text: 'HTML/XML',
-                      value: 'markup'
-                  },
-                  {
-                      text: 'JavaScript',
-                      value: 'javascript'
-                  },
-              ]
-          });
-      </script>
+    
 </x-layouts.master-layout>

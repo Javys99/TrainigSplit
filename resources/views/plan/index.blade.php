@@ -11,15 +11,16 @@
         <tbody>
             @foreach($plans as $plan)
             <tr>
-                <td>{{ $plan->id }}</td>
+                <td ><a class="font-weight-bold" href="{{ url('/plan/'.$plan->id.'/info') }}"> {{ $plan->id }} </a> </td> 
                 <td>{{ $plan->user->nombre }}</td>
-                <td>{!! $plan->plan !!}</td>
+                <td><?php
+                    $planText = strip_tags($plan->plan); // Eliminar etiquetas HTML si las hay
+                    $words = explode(' ', $planText); // Dividir el texto en palabras
+                    $first20Words = implode(' ', array_slice($words, 0, 20)); // Tomar las primeras 20 palabras
+                    echo $first20Words;
+                ?></td>
                 <td>
-                    <a href="{{ url('/plan/'.$plan->id.'/info') }}">
-                        Info
-                        </a>
-                        
-                        | 
+                   
                     <a href="{{ url('/plan/'.$plan->id.'/edit' ) }}" >
                         Editar
                     </a>
