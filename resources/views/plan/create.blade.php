@@ -1,5 +1,5 @@
 <x-layouts.master-layout title="Creación de planes">
-    <form method="post" action="{{ url('/plan') }}" enctype="multipart/form-data">
+    <form method="post" action="{{ route('plan.store') }}" enctype="multipart/form-data">
         @csrf
         <div class="card-body">
             <div class="mb-3">

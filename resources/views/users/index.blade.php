@@ -1,6 +1,6 @@
 <x-layouts.master-layout title="Clientes">
     <div class="d-flex justify-content-end " style="margin-right:1em;">
-        <a href="{{ route('cliente.create') }}" class="btn btn-success">Agregar Cliente</a>
+        <a href="{{ route('users.create') }}" class="btn btn-success">Agregar Cliente</a>
     </div>
     <table class="table table-light">
         <thead class="thead-light">
@@ -32,19 +32,19 @@
                 <td>{{ $user->correo }}</td>
                 <td>
                 
-                <a href="{{ url('/cliente/'.$user->id.'/info') }}">
+                <a href="{{ url('/users/'.$user->id.'/info') }}">
                 Info
                 </a>
                 
                 | 
     
-                <a href="{{ url('/cliente/'.$user->id.'/edit' ) }}" >
+                <a href="{{ url('/users/'.$user->id.'/edit' ) }}" >
                 Editar
                 </a>
     
                 |
                    
-                <form action="{{ url('/cliente/'.$user->id ) }}" method="post">
+                <form action="{{ url('/users/'.$user->id ) }}" method="post">
                 @csrf
                 {{ method_field('DELETE') }}
                 <input type="submit" onclick="return confirm ('¿Quieres borrar?')" value="Borrar">

@@ -6,7 +6,7 @@
     <title>Document</title>
 </head>
 <body>
-<form action=" {{ url('/cliente/form') }} " method="post" enctype="multipart/form-data">
+<form action=" {{ url('/users/form') }} " method="post" enctype="multipart/form-data">
 @csrf
 
 <label for="nombre"> Nombre </label>

@@ -20,11 +20,11 @@ class PlanController extends Controller
         return view('plan.create')->with('users', $users);
     }
 
-    public function info($id)
+    public function show($id)
     {
         $plan = Plan::findOrFail($id);
         
-        return view('plan.info', compact('plan'));
+        return view('plan.show', compact('plan'));
        
     }
 

@@ -11,7 +11,7 @@ class UserController extends Controller
     public function index()
     {
         $users = User::all();
-        return view('cliente.index')->with('users', $users);
+        return view('users.index')->with('users', $users);
     }
 
     /**
@@ -19,7 +19,7 @@ class UserController extends Controller
      */
     public function create()
     {
-        return view('cliente.create');
+        return view('users.create');
     }
 
     /**
@@ -41,7 +41,7 @@ class UserController extends Controller
         ];
 
         $this->validate($request,$campos,$mensaje);
-
+    
     $datosCliente = $request->except('_token');
 
     if($request->hasFile('foto_perfil')){
@@ -51,7 +51,7 @@ class UserController extends Controller
     User::create($datosCliente);
     
 
-    return redirect('cliente')->with('mensaje', 'Cliente agregado con exito');
+    return redirect('users')->with('mensaje', 'Cliente agregado con exito');
 
     }
 
@@ -65,15 +65,15 @@ class UserController extends Controller
     public function info($idCliente)
     {
         $cliente=User::findOrFail($idCliente);
-        return view('cliente.info');
+        return view('users.info');
     }
     /**
      * Show the form for editing the specified resource.
      */
     public function edit( $id)
     {
-        $cliente=User::findOrFail($id);
-        return view('cliente.edit', compact ('cliente') );
+        $user=User::findOrFail($id);
+        return view('users.edit', compact ('user') );
     }
 
     /**
@@ -108,15 +108,15 @@ class UserController extends Controller
         $datosCliente = request()->except(['_token','_method']);
 
         if($request->hasFile('foto_perfil')){
-            $cliente=User::findOrFail($id);
-            Storage::delete(['public/'.$cliente->foto_perfil]);
+            $user=User::findOrFail($id);
+            Storage::delete(['public/'.$user->foto_perfil]);
             $datosCliente['foto_perfil']=$request->file('foto_perfil')->store('uploads','public');
         }
 
         User::where('id','=',$id)->update($datosCliente);
 
-        $cliente=User::findOrFail($id);
-        return redirect('cliente')->with('mensaje','Cliente Modificado');
+        $user=User::findOrFail($id);
+        return redirect('users')->with('mensaje','Cliente Modificado');
     }
 
     /**
@@ -124,11 +124,11 @@ class UserController extends Controller
      */
     public function destroy($id)
     {
-        $cliente=User::findOrFail($id);
-        if(Storage::delete('public/'.$cliente->foto_perfil)){
+        $user=User::findOrFail($id);
+        if(Storage::delete('public/'.$user->foto_perfil)){
             User::destroy($id);
         }
-        return redirect('cliente');
+        return redirect('users');
 
     }
 }

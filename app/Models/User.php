@@ -23,6 +23,7 @@ class User extends Authenticatable
         'apellido_materno',
         'correo',
         'foto_perfil',
+        'foto_progreso'
     ];
 
     public function planes()

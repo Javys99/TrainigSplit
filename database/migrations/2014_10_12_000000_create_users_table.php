@@ -18,6 +18,7 @@ return new class extends Migration
             $table->string('apellido_materno', 50);
             $table->string('correo' , 255)->unique();
             $table->string('foto_perfil', 100);
+            $table->string('foto_progreso', 100)->nullable();
             $table->timestamp('email_verified_at')->nullable();
             $table->string('password')->nullable();
             $table->rememberToken();

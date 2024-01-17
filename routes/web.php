@@ -22,11 +22,13 @@ use Illuminate\Support\Facades\Route;
 Route::get('/', function () {
     return view('welcome');
 });
-
-Route::resource('cliente', UserController::class);
-Route::get('/cliente/{idCliente}/info', [UserController::class,'info'])->name('cliente.info');
+//Route::post('users/create', [UserController::class,'create'])->name('users.create');
+//Route::get('users/create', [UserController::class,'create'])->name('users.create');
+//Route::get('users/index', [UserController::class,'index'])->name('users.index');
+//Route::get('/users/{idCliente}/info', [UserController::class,'info'])->name('cliente.info');
 Route::get('/dashboard', [HomeController::class,'dashboard'])->name('dashboard.dashboard');
-Route::resource('plan', PlanController::class);
+
+//Route::resource('plan', PlanController::class);
 
 //show view for plans individual 
-Route::get('/plan/{idPlan}/info', [PlanController::class,'info'])->name('plan.info'); 
+//Route::get('/plan/{idPlan}/info', [PlanController::class,'info'])->name('plan.info'); 

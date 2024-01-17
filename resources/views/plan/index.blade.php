@@ -11,7 +11,7 @@
         <tbody>
             @foreach($plans as $plan)
             <tr>
-                <td ><a class="font-weight-bold" href="{{ url('/plan/'.$plan->id.'/info') }}"> {{ $plan->id }} </a> </td> 
+                <td ><a class="font-weight-bold" href="{{ route('plan.show',$plan->id) }}"> {{ $plan->id }} </a> </td> 
                 <td>{{ $plan->user->nombre }}</td>
                 <td><?php
                     $planText = strip_tags($plan->plan); // Eliminar etiquetas HTML si las hay
@@ -21,11 +21,11 @@
                 ?></td>
                 <td>
                    
-                    <a href="{{ url('/plan/'.$plan->id.'/edit' ) }}" >
+                    <a href="{{ route('plan.update', $plan->id) }}" >
                         Editar
                     </a>
                     |
-                    <form action="{{ url('/plan/'.$plan->id ) }}" method="post">
+                    <form action="{{ route('plan.destroy', $plan->id) }}" method="post">
                         @csrf
                         {{ method_field('DELETE') }}
                         <input type="submit" onclick="return confirm ('¿Quieres borrar?')" value="Borrar">

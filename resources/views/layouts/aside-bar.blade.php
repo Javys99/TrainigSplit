@@ -121,7 +121,7 @@
         </a>
         <ul class="menu-sub">
           <li class="menu-item">
-            <a href="{{route('cliente.index')}}" class="menu-link">
+            <a href="{{route('users.index')}}" class="menu-link">
               <div data-i18n="Account">Clientes</div>
             </a>
           </li>
