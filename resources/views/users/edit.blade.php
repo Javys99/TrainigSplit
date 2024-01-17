@@ -24,21 +24,22 @@
     <br>
     
     <label for="apellido_paterno"> Apellido Paterno </label>
-    <input type="text" name="apellido_paterno" value="{{ isset($cliente->apellido_paterno)}}" id="apellido_paterno">
+    <input type="text" name="apellido_paterno" value="{{ $user->apellido_paterno }}" id="apellido_paterno">
     <br>
     
     <label for="apellido_materno"> Apellido Materno </label>
-    <input type="text" name="apellido_materno" value="{{ isset($cliente->apellido_materno) }}" id="apellido_materno">
+    <input type="text" name="apellido_materno" value="{{ $user->apellido_materno }}" id="apellido_materno">
     <br>
     
     <label for="correo"> Correo </label>
-    <input type="text" name="correo" value="{{ isset($cliente->correo) }}" id="correo">
+    <input type="text" name="correo" value="{{ $user->correo }}" id="correo">
     <br>
     
     <label for="foto_perfil">Foto</label>
-    @if(isset($cliente->foto_perfil))
-    <img src="{{ asset('storage').'/'.$cliente->foto_perfil }}" width="200" alt="">
+    @if($user->foto_perfil)
+    <img src="{{ asset('storage').'/'.$user->foto_perfil }}" width="200" alt="">
     @endif
+    <br>
     <input type="file" name="foto_perfil" id="foto_perfil">
     <br>
     <input type="submit" value="Guardar" id="guardar">

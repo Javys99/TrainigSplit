@@ -21,7 +21,7 @@
                 ?></td>
                 <td>
                    
-                    <a href="{{ route('plan.update', $plan->id) }}" >
+                    <a href="{{ route('plan.edit', $plan->id) }}" >
                         Editar
                     </a>
                     |
