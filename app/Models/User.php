@@ -18,12 +18,12 @@ class User extends Authenticatable
      * @var array<int, string>
      */
     protected $fillable = [
-        'nombre',
-        'apellido_paterno',
-        'apellido_materno',
-        'correo',
-        'foto_perfil',
-        'foto_progreso'
+        'name',
+        'last_name',
+        'middle_name',
+        'email',
+        'profile_picture',
+        'progress_picture'
     ];
 
     public function planes()

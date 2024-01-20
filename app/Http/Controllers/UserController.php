@@ -28,15 +28,16 @@ class UserController extends Controller
     public function store(Request $request)
     {
         $campos=[
-            'nombre'=>'required|string|max:100',
-            'apellido_paterno'=>'required|string|max:100',
-            'apellido_materno'=>'required|string|max:100',
-            'correo'=>'required|email',
-            'foto_perfil'=>'required|max:10000|mimes:jpeg,png,jpg',
+            'name'=>'required|string|max:100',
+            'last_name'=>'required|string|max:100',
+            'middle_name'=>'required|string|max:100',
+            'email'=>'required|email',
+            'profile_picture'=>'required|max:10000|mimes:jpeg,png,jpg',
+            
         ];
         $mensaje=[
             'required'=>'El :attribute es requerido',
-            'foto_perfil.required'=>'La foto es requerida'
+            'profile_picture.required'=>'La foto es requerida'
 
         ];
 
@@ -44,8 +45,8 @@ class UserController extends Controller
     
     $datosCliente = $request->except('_token');
 
-    if($request->hasFile('foto_perfil')){
-        $datosCliente['foto_perfil']=$request->file('foto_perfil')->store('uploads','public');
+    if($request->hasFile('profile_picture')){
+        $datosCliente['profile_picture']=$request->file('profile_picture')->store('uploads','public');
     }
 
     User::create($datosCliente);
@@ -58,14 +59,12 @@ class UserController extends Controller
     /**
      * Display the specified resource.
      */
-    public function show(User $cliente)
+    public function show($id)
     {
-        //
-    }
-    public function info($idCliente)
-    {
-        $cliente=User::findOrFail($idCliente);
-        return view('users.info');
+        $user = User::findOrFail($id);
+        
+        return view('users.show', compact('user'));
+       
     }
     /**
      * Show the form for editing the specified resource.
@@ -82,22 +81,22 @@ class UserController extends Controller
     public function update(Request $request, $id)
     {
         $campos=[
-            'nombre'=>'required|string|max:100',
-            'apellido_paterno'=>'required|string|max:100',
-            'apellido_materno'=>'required|string|max:100',
-            'correo'=>'required|email',
-            'foto_perfil'=>'required|max:10000|mimes:jpeg,png,jpg'
+            'name'=>'required|string|max:100',
+            'last_name'=>'required|string|max:100',
+            'middle_name'=>'required|string|max:100',
+            'email'=>'required|email',
+            'profile_picture'=>'required|max:10000|mimes:jpeg,png,jpg',
         ];
         $mensaje=[
             'required'=>'El :attribute es requerido',
-            'foto_perfil.required'=>'La foto es requerida'
+            'profile_picture.required'=>'La foto es requerida'
 
         ];
 
-        if($request->hasFile('foto_perfil')){
+        if($request->hasFile('profile_picture')){
             
-            $campos=['foto_perfil'=>'required|max:10000|mimes:jpeg,png,jpg'];
-            $mensaje=['foto_perfil.required'=>'La foto es requerida'];
+            $campos=['profile_picture'=>'required|max:10000|mimes:jpeg,png,jpg'];
+            $mensaje=['profile_picture.required'=>'La foto es requerida'];
 
         }
 
@@ -107,10 +106,10 @@ class UserController extends Controller
 
         $datosCliente = request()->except(['_token','_method']);
 
-        if($request->hasFile('foto_perfil')){
+        if($request->hasFile('profile_picture')){
             $user=User::findOrFail($id);
             Storage::delete(['public/'.$user->foto_perfil]);
-            $datosCliente['foto_perfil']=$request->file('foto_perfil')->store('uploads','public');
+            $datosCliente['profile_picture']=$request->file('profile_picture')->store('uploads','public');
         }
 
         User::where('id','=',$id)->update($datosCliente);

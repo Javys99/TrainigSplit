@@ -32,3 +32,6 @@ Route::get('/dashboard', [HomeController::class,'dashboard'])->name('dashboard.d
 
 //show view for plans individual 
 //Route::get('/plan/{idPlan}/info', [PlanController::class,'info'])->name('plan.info'); 
+Auth::routes();
+
+Route::get('/home', [App\Http\Controllers\HomeController::class, 'index'])->name('home');

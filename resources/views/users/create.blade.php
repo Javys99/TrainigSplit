@@ -18,27 +18,27 @@
         </ul>
     </div>
 @endif
-    <label for="nombre"> Nombre </label>
-    <input type="text" name="nombre" value="{{ isset($cliente->nombre) }}" id="nombre">
+    <label for="name"> Nombre </label>
+    <input type="text" name="name" value="{{ isset($user->name) }}" id="name">
     <br>
     
-    <label for="apellido_paterno"> Apellido Paterno </label>
-    <input type="text" name="apellido_paterno" value="{{ isset($cliente->apellido_paterno)}}" id="apellido_paterno">
+    <label for="last_name"> Apellido Paterno </label>
+    <input type="text" name="last_name" value="{{ isset($user->last_name)}}" id="last_name">
     <br>
     
-    <label for="apellido_materno"> Apellido Materno </label>
-    <input type="text" name="apellido_materno" value="{{ isset($cliente->apellido_materno) }}" id="apellido_materno">
+    <label for="middle_name"> Apellido Materno </label>
+    <input type="text" name="middle_name" value="{{ isset($user->middle_name) }}" id="middle_name">
     <br>
     
-    <label for="correo"> Correo </label>
-    <input type="text" name="correo" value="{{ isset($cliente->correo) }}" id="correo">
+    <label for="email"> Correo </label>
+    <input type="text" name="email" value="{{ isset($user->email) }}" id="email">
     <br>
     
-    <label for="foto_perfil">Foto</label>
-    @if(isset($cliente->foto_perfil))
-    <img src="{{ asset('storage').'/'.$cliente->foto_perfil }}" width="200" alt="">
+    <label for="profile_picture">Foto</label>
+    @if(isset($user->profile_picture))
+    <img src="{{ asset('storage').'/'.$user->profile_picture }}" width="200" alt="">
     @endif
-    <input type="file" name="foto_perfil" id="foto_perfil">
+    <input type="file" name="profile_picture" id="profile_picture">
     <br>
     <input type="submit" value="Guardar" id="guardar">
     </form>

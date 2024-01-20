@@ -21,30 +21,30 @@
                 <td>{{ $user->id }}</td>
     
                 <td>
-                <img src="{{ asset('storage').'/'.$user->foto_perfil }}" width="50" alt="">
+                <img src="{{ asset('storage').'/'.$user->profile_picture }}" width="50" alt="">
                 
                 </td>
     
     
-                <td>{{ $user->nombre }}</td>
-                <td>{{ $user->apellido_paterno }}</td>
-                <td>{{ $user->apellido_materno }}</td>
-                <td>{{ $user->correo }}</td>
+                <td>{{ $user->name }}</td>
+                <td>{{ $user->last_name }}</td>
+                <td>{{ $user->middle_name }}</td>
+                <td>{{ $user->email }}</td>
                 <td>
                 
-                <a href="{{ url('/users/'.$user->id.'/info') }}">
+                <a href="{{ route('users.show', $user->id) }}">
                 Info
                 </a>
                 
                 | 
     
-                <a href="{{ url('/users/'.$user->id.'/edit' ) }}" >
+                <a href="{{ route('users.update', $user->id) }}" >
                 Editar
                 </a>
     
                 |
                    
-                <form action="{{ url('/users/'.$user->id ) }}" method="post">
+                <form action="{{ route('users.destroy', $user->id) }}" method="post">
                 @csrf
                 {{ method_field('DELETE') }}
                 <input type="submit" onclick="return confirm ('¿Quieres borrar?')" value="Borrar">
