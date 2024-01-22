@@ -1,11 +1,9 @@
 <?php
 
-use App\Http\Controllers\ClienteController;
+use App\Http\Controllers\Auth\LoginController;
+use App\Http\Controllers\Auth\RegisterController;
 use App\Http\Controllers\HomeController;
-use App\Http\Controllers\PlanController;
-use App\Http\Controllers\UserController;
-use App\Models\Cliente;
-use App\Models\User;
+use Illuminate\Support\Facades\Auth;
 use Illuminate\Support\Facades\Route;
 
 /*
@@ -33,5 +31,8 @@ Route::get('/dashboard', [HomeController::class,'dashboard'])->name('dashboard.d
 //show view for plans individual 
 //Route::get('/plan/{idPlan}/info', [PlanController::class,'info'])->name('plan.info'); 
 Auth::routes();
-
+Route::post('auth/login', [LoginController::class,'login'])->name('auth.login');
+Route::get('auth/login', [LoginController::class,'login'])->name('auth.login');
+Route::post('auth/register', [RegisterController::class,'create'])->name('auth.create');
+Route::get('auth/register', [RegisterController::class,'create'])->name('auth.create');
 Route::get('/home', [App\Http\Controllers\HomeController::class, 'index'])->name('home');

@@ -63,7 +63,8 @@
             <div class="card-body">
               <h4 class="mb-2">Tu cambio empieza ahora</h4>
 
-              <form id="formAuthentication" class="mb-3" action="index.html" method="POST">
+              <form id="formAuthentication" class="mb-3" action="{{ route('register')}}" method="POST">
+                @csrf
                 <div class="mb-3">
                   <label for="name" class="form-label">Nombre</label>
                   <input
@@ -71,6 +72,7 @@
                     class="form-control"
                     id="name"
                     name="name"
+                    value="{{ isset($user->name) }}"
                     placeholder="Ingresa tu nombre"
                     autofocus
                   />
@@ -82,6 +84,7 @@
                       class="form-control"
                       id="last_name"
                       name="last_name"
+                      value="{{ isset($user->last_name)}}"
                       placeholder="Ingresa tu apellido paterno"
                       autofocus
                     />
@@ -93,13 +96,20 @@
                       class="form-control"
                       id="middle_name"
                       name="middle_name"
+                      value="{{ isset($user->middle_name) }}"
                       placeholder="Ingresa tu apellido materno"
                       autofocus
                     />
                   </div>
                 <div class="mb-3">
                   <label for="email" class="form-label">Correo</label>
-                  <input type="text" class="form-control" id="email" name="email" placeholder="Ingresa tu correo" />
+                  <input 
+                  type="text" 
+                  class="form-control"
+                  id="email" 
+                  name="email" 
+                  value="{{ isset($user->email) }}"
+                  placeholder="Ingresa tu correo" />
                 </div>
                 <div class="mb-3 form-password-toggle">
                   <label class="form-label" for="password">Contraseña</label>
@@ -109,6 +119,7 @@
                       id="password"
                       class="form-control"
                       name="password"
+                      value="{{ isset($user->password) }}"
                       placeholder="&#xb7;&#xb7;&#xb7;&#xb7;&#xb7;&#xb7;&#xb7;&#xb7;&#xb7;&#xb7;&#xb7;&#xb7;"
                       aria-describedby="password"
                     />
@@ -125,12 +136,12 @@
                     </label>
                   </div>
                 </div>
-                <button class="btn btn-primary d-grid w-100">Registrarse</button>
+                <button class="btn btn-primary d-grid w-100" type="submit">Registrarse</button>
               </form>
 
               <p class="text-center">
                 <span>¿Ya tienes una cuenta?</span>
-                <a href="auth-login-basic.html">
+                <a href="{{ route('login') }}">
                   <span>Inicia Sesión</span>
                 </a>
               </p>

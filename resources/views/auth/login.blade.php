@@ -170,7 +170,7 @@
 
               <p class="text-center">
                 <span>¿Aún no tienes cuenta?</span>
-                <a href="auth-register-basic.html">
+                <a href="{{ route('register') }}">
                   <span>Crear cuenta</span>
                 </a>
               </p>

@@ -20,7 +20,7 @@ return new class extends Migration
             $table->string('profile_picture', 100);
             $table->string('progress_picture', 100)->nullable();
             $table->timestamp('email_verified_at')->nullable();
-            $table->string('password')->nullable();
+            $table->string('password');
             $table->rememberToken();
             $table->timestamps();
         });
