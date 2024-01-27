@@ -21,6 +21,12 @@ class User extends Authenticatable
         'name',
         'email',
         'password',
+        'rol_id',
+        'age',
+        'weight',
+        'health_details',
+        'food_details',
+        'activity_details',
         'avatar',
     ];
 

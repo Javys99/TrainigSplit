@@ -16,6 +16,13 @@ return new class extends Migration
             $table->string('name', 100);
             $table->string('email' , 255)->unique();
             $table->string('avatar')->nullable();
+            $table->integer('rol_id')->default(2);
+            $table->integer('age')->nullable();
+            $table->string('weight')->nullable();
+            $table->string('height')->nullable();
+            $table->string('health_details')->nullable();
+            $table->string('food_details')->nullable();
+            $table->string('activity_details')->nullable();
             $table->timestamp('email_verified_at')->nullable();
             $table->string('password');
             $table->rememberToken();

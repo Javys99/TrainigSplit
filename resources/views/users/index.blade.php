@@ -21,7 +21,7 @@
                 <td>{{ $user->id }}</td>
     
                 <td>
-                <img src="{{ asset('storage').'/'.$user->profile_picture }}" width="50" alt="">
+                <img src="{{ asset('storage').'/'.$user->avatar }}" width="50" alt="">
                 
                 </td>
     
