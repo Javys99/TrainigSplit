@@ -1,176 +1,78 @@
 <!DOCTYPE html>
+<html lang="en">
 
-<html
-  lang="en"
-  class="light-style customizer-hide"
-  dir="ltr"
-  data-theme="theme-default"
-  data-assets-path="{{ asset('assets')}}"
-  data-template="vertical-menu-template-free"
->
-  <head>
-    <meta charset="utf-8" />
-    <meta
-      name="viewport"
-      content="width=device-width, initial-scale=1.0, user-scalable=no, minimum-scale=1.0, maximum-scale=1.0"
-    />
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <meta http-equiv="X-UA-Compatible" content="ie=edge">
+    <title>Iniciar Sesión</title>
+    <link href="https://cdn.jsdelivr.net/npm/bootstrap@5.3.2/dist/css/bootstrap.min.css" rel="stylesheet" integrity="sha384-T3c6CoIi6uLrA9TneNEoa7RxnatzjcDSCmG1MXxSR1GAsXEV/Dwwykc2MPK8M2HN" crossorigin="anonymous">
+<script src="https://cdn.jsdelivr.net/npm/bootstrap@5.3.2/dist/js/bootstrap.bundle.min.js" integrity="sha384-C6RzsynM9kWDrMNeT87bh95OGNyZPhcTNXj1NW7RuBCsyN/o0jlpcV8Qyq46cDfL" crossorigin="anonymous"></script>
+</head>
 
-    <title>Registro</title>
-
-    <meta name="description" content="" />
-
-    <!-- Favicon -->
-    <link rel="icon" type="image/x-icon" href="{{ asset('assets/img/favicon/favicon.ico')}}" />
-
-    <!-- Fonts -->
-    <link rel="preconnect" href="https://fonts.googleapis.com" />
-    <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin />
-    <link
-      href="https://fonts.googleapis.com/css2?family=Public+Sans:ital,wght@0,300;0,400;0,500;0,600;0,700;1,300;1,400;1,500;1,600;1,700&display=swap"
-      rel="stylesheet"
-    />
-
-    <!-- Icons. Uncomment required icon fonts -->
-    <link rel="stylesheet" href="{{ asset('assets/vendor/fonts/boxicons.css')}}" />
-
-    <!-- Core CSS -->
-    <link rel="stylesheet" href="{{ asset('assets/vendor/css/core.css')}}" class="template-customizer-core-css" />
-    <link rel="stylesheet" href="{{ asset('assets/vendor/css/theme-default.css')}}" class="template-customizer-theme-css" />
-    <link rel="stylesheet" href="{{ asset('assets/css/demo.css')}}" />
-
-    <!-- Vendors CSS -->
-    <link rel="stylesheet" href="{{ asset('assets/vendor/libs/perfect-scrollbar/perfect-scrollbar.css')}}" />
-
-    <!-- Page CSS -->
-    <!-- Page -->
-    <link rel="stylesheet" href="{{ asset('assets/vendor/css/pages/page-auth.css')}}" />
-    <!-- Helpers -->
-    <script src="{{ asset('assets/vendor/js/helpers.js')}}"></script>
-
-    <!--! Template customizer & Theme config files MUST be included after core stylesheets and helpers.js in the <head> section -->
-    <!--? Config:  Mandatory theme config file contain global vars & default theme options, Set your preferred theme option in this file.  -->
-    <script src="{{ asset('assets/js/config.js')}}"></script>
-  </head>
-
-  <body>
-    <!-- Content -->
-
-    <div class="container-xxl">
-      <div class="authentication-wrapper authentication-basic container-p-y">
-        <div class="authentication-inner">
-          <!-- Register Card -->
-          <div class="card">
-            <div class="card-body">
-              <h4 class="mb-2">Tu cambio empieza ahora</h4>
-
-              <form id="formAuthentication" class="mb-3" action="{{ route('register')}}" method="POST">
-                @csrf
-                <div class="mb-3">
-                  <label for="name" class="form-label">Nombre</label>
-                  <input
-                    type="text"
-                    class="form-control"
-                    id="name"
-                    name="name"
-                    value="{{ isset($user->name) }}"
-                    placeholder="Ingresa tu nombre"
-                    autofocus
-                  />
+<body>
+    <style>
+        .divider:after,
+        .divider:before {
+            content: "";
+            flex: 1;
+            height: 1px;
+            background: #eee;
+        }
+    </style>
+    <section class="vh-100">
+        <div class="container py-5 h-100">
+            <div class="row d-flex align-items-center justify-content-center h-100">
+                <div class="col-md-8 col-lg-7 col-xl-6">
+                    <img src="{{asset('images/auth.jpg')}}"
+                        class="img-fluid" alt="Phone image">
                 </div>
-                <div class="mb-3">
-                    <label for="last_name" class="form-label">Apellido Paterno</label>
-                    <input
-                      type="text"
-                      class="form-control"
-                      id="last_name"
-                      name="last_name"
-                      value="{{ isset($user->last_name)}}"
-                      placeholder="Ingresa tu apellido paterno"
-                      autofocus
-                    />
-                  </div>
-                  <div class="mb-3">
-                    <label for="middle_name" class="form-label">Apellido Materno</label>
-                    <input
-                      type="text"
-                      class="form-control"
-                      id="middle_name"
-                      name="middle_name"
-                      value="{{ isset($user->middle_name) }}"
-                      placeholder="Ingresa tu apellido materno"
-                      autofocus
-                    />
-                  </div>
-                <div class="mb-3">
-                  <label for="email" class="form-label">Correo</label>
-                  <input 
-                  type="text" 
-                  class="form-control"
-                  id="email" 
-                  name="email" 
-                  value="{{ isset($user->email) }}"
-                  placeholder="Ingresa tu correo" />
-                </div>
-                <div class="mb-3 form-password-toggle">
-                  <label class="form-label" for="password">Contraseña</label>
-                  <div class="input-group input-group-merge">
-                    <input
-                      type="password"
-                      id="password"
-                      class="form-control"
-                      name="password"
-                      value="{{ isset($user->password) }}"
-                      placeholder="&#xb7;&#xb7;&#xb7;&#xb7;&#xb7;&#xb7;&#xb7;&#xb7;&#xb7;&#xb7;&#xb7;&#xb7;"
-                      aria-describedby="password"
-                    />
-                    <span class="input-group-text cursor-pointer"><i class="bx bx-hide"></i></span>
-                  </div>
-                </div>
+                <div class="col-md-7 col-lg-5 col-xl-5 offset-xl-1">
+                    <form method="POST" action="{{ route('register') }}" 
+                    class="bg-white rounded shadow-5-strong p-5"
+                    enctype="multipart/form-data"
+                    >
+                        
+                        @csrf
+                        <!-- Email input -->
 
-                <div class="mb-3">
-                  <div class="form-check">
-                    <input class="form-check-input" type="checkbox" id="terms-conditions" name="terms" />
-                    <label class="form-check-label" for="terms-conditions">
-                      Acepto
-                      <a href="javascript:void(0);">los terminos y condiciones</a>
-                    </label>
-                  </div>
-                </div>
-                <button class="btn btn-primary d-grid w-100" type="submit">Registrarse</button>
-              </form>
+                        {{-- avatar  --}}
+                        <div class="form-outline mb-4">
+                            {{-- input file  --}}
+                            <input type="file" id="avatar" name="avatar" class="form-control form-control-lg" />
+                        <label class="form-label" for="avatar">Avatar</label>
 
-              <p class="text-center">
-                <span>¿Ya tienes una cuenta?</span>
-                <a href="{{ route('login') }}">
-                  <span>Inicia Sesión</span>
-                </a>
-              </p>
+                        <div class="form-outline mb-4">
+                            <input type="text" id="name" value="{{ old('name') }}" name="name" class="form-control form-control-lg" />
+                            <label class="form-label" for="form1Example13">Nombre</label>
+                        </div>
+
+                        <div class="form-outline mb-4">
+                            <input type="email" id="email" class="form-control form-control-lg" value="{{ old('email') }}" name="email"  />
+                            <label class="form-label" for="form1Example13">Correo</label>
+                        </div>
+
+                        <!-- Password input -->
+                        <div class="form-outline mb-4">
+                            <input type="password" id="password" name="password" class="form-control form-control-lg" />
+                            <label class="form-label" for="form1Example23">Contraseña</label>
+                        </div>
+
+                         <!-- Password input -->
+                         <div class="form-outline mb-4">
+                            <input type="password" id="password_confirmation" name="password_confirmation" class="form-control form-control-lg" />
+                            <label class="form-label" for="form1Example23">Confirmar contraseña</label>
+                        </div>
+
+                        <!-- Submit button -->
+                        <div class="divider d-flex align-items-center my-4">
+                            <button type="submit" class="btn btn-primary btn-lg btn-block">Registrar</button>
+                        </div>
+                    </form>
+                </div>
             </div>
-          </div>
-          <!-- Register Card -->
         </div>
-      </div>
-    </div>
+    </section>
+</body>
 
-    <!-- / Content -->
-    <!-- Core JS -->
-    <!-- build:js assets/vendor/js/core.js -->
-    <script src="{{ asset('assets/vendor/libs/jquery/jquery.js')}}"></script>
-    <script src="{{ asset('assets/vendor/libs/popper/popper.js')}}"></script>
-    <script src="{{ asset('assets/vendor/js/bootstrap.js')}}"></script>
-    <script src="{{ asset('assets/vendor/libs/perfect-scrollbar/perfect-scrollbar.js')}}"></script>
-
-    <script src="{{ asset('assets/vendor/js/menu.js')}}"></script>
-    <!-- endbuild -->
-
-    <!-- Vendors JS -->
-
-    <!-- Main JS -->
-    <script src="{{ asset('assets/js/main.js')}}"></script>
-
-    <!-- Page JS -->
-
-    <!-- Place this tag in your head or just before your close body tag. -->
-    <script async defer src="https://buttons.github.io/buttons.js"></script>
-  </body>
 </html>
