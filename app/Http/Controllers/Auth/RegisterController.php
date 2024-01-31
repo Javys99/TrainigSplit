@@ -57,8 +57,8 @@ class RegisterController extends Controller
             'email' => ['required', 'string', 'email', 'max:255', 'unique:users'],
             'age' => ['required', 'date', 'max:255'],
             'activity_details' => ['required', 'string', 'max:255'],
-            'phone_number' => ['required', 'integer', 'max:255'],
-            'avatar' => ['required', 'string', 'max:255'],
+            'phone_number' => ['required', 'string', 'max:255'],
+            // 'avatar' => ['required', 'string', 'max:255'],
             'password' => ['required', 'string', 'min:8', 'confirmed'],
         ]);
     }
@@ -84,11 +84,11 @@ class RegisterController extends Controller
             'password' => Hash::make($data['password']),
         ]);
 
-        if (isset($data['avatar'])) {
-            $avatarPath = $data['avatar']->store('avatars', 'public');
-            $user->avatar = $avatarPath;
-            $user->save();
-        }
+        // if (isset($data['avatar'])) {
+        //     $avatarPath = $data['avatar']->store('avatars', 'public');
+        //     $user->avatar = $avatarPath;
+        //     $user->save();
+        // }
     
         return $user;
     }

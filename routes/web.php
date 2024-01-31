@@ -32,11 +32,3 @@ Route::get('/dashboard', [HomeController::class,'dashboard'])->name('dashboard.d
 //Route::get('/plan/{idPlan}/info', [PlanController::class,'info'])->name('plan.info'); 
 Auth::routes();
 Route::get('/home', [App\Http\Controllers\HomeController::class, 'index'])->name('home');
-
-Auth::routes();
-
-Route::get('/home', [App\Http\Controllers\HomeController::class, 'index'])->name('home');
-
-Auth::routes();
-
-Route::get('/home', [App\Http\Controllers\HomeController::class, 'index'])->name('home');

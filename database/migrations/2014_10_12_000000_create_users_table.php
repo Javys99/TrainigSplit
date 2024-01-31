@@ -18,10 +18,10 @@ return new class extends Migration
             $table->string('email' , 255)->unique();
             $table->string('phone_number' , 20)->unique();
             $table->string('gender', 50);
-            $table->string('avatar', 10);
+            // $table->string('avatar', 10);
             $table->integer('rol_id')->default(2);
-            $table->float('height', 3);
-            $table->float('weight', 3);
+            $table->integer('height');
+            $table->integer('weight');
             $table->date('age', 20);
             $table->string('activity_details', 255);
             $table->timestamp('email_verified_at')->nullable();
