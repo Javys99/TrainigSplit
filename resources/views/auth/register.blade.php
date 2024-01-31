@@ -1,179 +1,155 @@
 <!DOCTYPE html>
 <html lang="en">
 
-<head>
-    <meta charset="UTF-8">
-    <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <meta http-equiv="X-UA-Compatible" content="ie=edge">
-<<<<<<< Updated upstream
-    <title>Iniciar Sesión</title>
-    <link href="https://cdn.jsdelivr.net/npm/bootstrap@5.3.2/dist/css/bootstrap.min.css" rel="stylesheet" integrity="sha384-T3c6CoIi6uLrA9TneNEoa7RxnatzjcDSCmG1MXxSR1GAsXEV/Dwwykc2MPK8M2HN" crossorigin="anonymous">
-<script src="https://cdn.jsdelivr.net/npm/bootstrap@5.3.2/dist/js/bootstrap.bundle.min.js" integrity="sha384-C6RzsynM9kWDrMNeT87bh95OGNyZPhcTNXj1NW7RuBCsyN/o0jlpcV8Qyq46cDfL" crossorigin="anonymous"></script>
-</head>
+    <head>
 
-<body>
-    <style>
-        .divider:after,
-        .divider:before {
-            content: "";
-            flex: 1;
-            height: 1px;
-            background: #eee;
-        }
-    </style>
-    <section class="vh-100">
-        <div class="container py-5 h-100">
-            <div class="row d-flex align-items-center justify-content-center h-100">
-                <div class="col-md-8 col-lg-7 col-xl-6">
-                    <img src="{{asset('images/auth.jpg')}}"
-                        class="img-fluid" alt="Phone image">
-                </div>
-                <div class="col-md-7 col-lg-5 col-xl-5 offset-xl-1">
-                    <form method="POST" action="{{ route('register') }}" 
-                    class="bg-white rounded shadow-5-strong p-5"
-                    enctype="multipart/form-data"
-                    >
-                        
-                        @csrf
-                        <!-- Email input -->
+        <meta charset="utf-8">
+        <meta http-equiv="X-UA-Compatible" content="IE=edge">
+        <meta name="viewport" content="width=device-width, initial-scale=1">
+        <title>BootZard - Bootstrap Wizard Template</title>
 
-                        {{-- avatar  --}}
-                        <div class="form-outline mb-4">
-                            {{-- input file  --}}
-                            <input type="file" id="avatar" name="avatar" class="form-control form-control-lg" />
-                        <label class="form-label" for="avatar">Avatar</label>
+        <!-- CSS -->
+        <link rel="stylesheet" href="http://fonts.googleapis.com/css?family=Roboto:400,100,300,500">
+        <link rel="stylesheet" href="assets/bootstrap/css/bootstrap.min.css">
+        <link rel="stylesheet" href="assets/font-awesome/css/font-awesome.min.css">
+		<link rel="stylesheet" href="assets/css/form-elements.css">
+        <link rel="stylesheet" href="assets/css/style.css">
 
-                        <div class="form-outline mb-4">
-                            <input type="text" id="name" value="{{ old('name') }}" name="name" class="form-control form-control-lg" />
-                            <label class="form-label" for="form1Example13">Nombre</label>
-                        </div>
 
-                        <div class="form-outline mb-4">
-                            <input type="email" id="email" class="form-control form-control-lg" value="{{ old('email') }}" name="email"  />
-                            <label class="form-label" for="form1Example13">Correo</label>
-                        </div>
+        <!-- Favicon and touch icons -->
+        <link rel="shortcut icon" href="assets/ico/favicon.png">
+        <link rel="apple-touch-icon-precomposed" sizes="144x144" href="assets/ico/apple-touch-icon-144-precomposed.png">
+        <link rel="apple-touch-icon-precomposed" sizes="114x114" href="assets/ico/apple-touch-icon-114-precomposed.png">
+        <link rel="apple-touch-icon-precomposed" sizes="72x72" href="assets/ico/apple-touch-icon-72-precomposed.png">
+        <link rel="apple-touch-icon-precomposed" href="assets/ico/apple-touch-icon-57-precomposed.png">
 
-                        <!-- Password input -->
-                        <div class="form-outline mb-4">
-                            <input type="password" id="password" name="password" class="form-control form-control-lg" />
-                            <label class="form-label" for="form1Example23">Contraseña</label>
-                        </div>
+    </head>
 
-                         <!-- Password input -->
-                         <div class="form-outline mb-4">
-                            <input type="password" id="password_confirmation" name="password_confirmation" class="form-control form-control-lg" />
-                            <label class="form-label" for="form1Example23">Confirmar contraseña</label>
-                        </div>
+    <body>
 
-                        <!-- Submit button -->
-                        <div class="divider d-flex align-items-center my-4">
-                            <button type="submit" class="btn btn-primary btn-lg btn-block">Registrar</button>
-                        </div>
-                    </form>
-=======
-    <link href="https://cdn.jsdelivr.net/npm/bootstrap@5.3.2/dist/css/bootstrap.min.css" rel="stylesheet"
-        integrity="sha384-T3c6CoIi6uLrA9TneNEoa7RxnatzjcDSCmG1MXxSR1GAsXEV/Dwwykc2MPK8M2HN" crossorigin="anonymous">
-    <script src="https://cdn.jsdelivr.net/npm/bootstrap@5.3.2/dist/js/bootstrap.bundle.min.js"
-        integrity="sha384-C6RzsynM9kWDrMNeT87bh95OGNyZPhcTNXj1NW7RuBCsyN/o0jlpcV8Qyq46cDfL" crossorigin="anonymous">
-    </script>
-    
-    <title>Registro</title>
-</head>
-<style>
-    .gradient-custom-2 {
-        /* fallback for old browsers */
-        background: #fccb90;
+		<!-- Top menu -->
 
-        /* Chrome 10-25, Safari 5.1-6 */
-        background: -webkit-linear-gradient(to right, #ee7724, #d8363a, #dd3675, #b44593);
-
-        /* W3C, IE 10+/ Edge, Firefox 16+, Chrome 26+, Opera 12+, Safari 7+ */
-        background: linear-gradient(to right, #ee7724, #d8363a, #dd3675, #b44593);
-    }
-
-    @media (min-width: 768px) {
-        .gradient-form {
-            height: 100vh !important;
-        }
-    }
-
-    @media (min-width: 769px) {
-        .gradient-custom-2 {
-            border-top-right-radius: .3rem;
-            border-bottom-right-radius: .3rem;
-        }
-    }
-</style>
-
-<body>
-    <section class="h-100 gradient-form" style="background-color: #eee;">
-        <div class="container py-5 h-100">
-            <div class="row d-flex justify-content-center align-items-center h-100">
-                <div class="col-xl-10">
-                    <div class="card rounded-3 text-black">
-                        <div class="row g-0">
-                            <div class="col-lg-6">
-                                <div class="card-body p-md-5 mx-md-4">
-
-                                    <div class="text-center">
-                                        <img src="https://mdbcdn.b-cdn.net/img/Photos/new-templates/bootstrap-login-form/lotus.webp"
-                                            style="width: 185px;" alt="logo">
-                                        <h4 class="mt-1 mb-5 pb-1">We are The Lotus Team</h4>
-                                    </div>
-
-                                    <form method="POST" action="{{ route('register') }}">
-                                        @csrf
-                                        <p>Registrate</p>
-
-                                        <div class="form-outline mb-2">
-                                            
-                                            <label class="form-label" for="name">Nombre</label>
-                                            <input type="text" id="name" class="form-control"
-                                                placeholder="Ingresa tu nombre" name="name" />
-                                        </div>
-                                        <div class="form-outline mb-2">
-                                            
-                                            <label class="form-label" for="email">Correo</label>
-                                            <input type="email" id="email" class="form-control"
-                                                placeholder="Ingresa tu correo" name="email" />
-                                        </div>
-                                        <div class="form-outline mb-2">
-                                           
-                                            <label class="form-label" for="password" >Contraseña</label>
-                                            <input type="password" id="password" class="form-control" name="password" />
-                                        </div>
-                                        <div class="form-outline mb-2">
-                                            
-                                            <label class="form-label" for="password" >Confirmar contraseña</label>
-                                            <input type="password" id="password_confirmation" class="form-control" name="password_confirmation" />
-                                        </div>
-                                        
-                                        <button class="btn btn-primary btn-block fa-lg gradient-custom-2 mb-3" type="submit">Registrar</button>
-                                    </form>
-
+        <!-- Top content -->
+        <div class="top-content">
+            <div class="container">
+                <div class="row">
+                    <div class="col-sm-10 col-sm-offset-1 col-md-8 col-md-offset-2 col-lg-6 col-lg-offset-3 form-box">
+                    	<form role="form" action="{{route('register')}}" method="POST" class="f1">
+                            @csrf
+                    		<h3>Registrate</h3>
+                    		<p>Llena el formulario para tener acceso</p>
+                    		<div class="f1-steps">
+                    			<div class="f1-progress">
+                    			    <div class="f1-progress-line" data-now-value="16.66" data-number-of-steps="3" style="width: 16.66%;"></div>
+                    			</div>
+                    			<div class="f1-step active">
+                    				<div class="f1-step-icon"><i class="fa fa-user"></i></div>
+                    				<p>Sobre ti</p>
+                    			</div>
+                    			<div class="f1-step">
+                    				<div class="f1-step-icon"><i class="fa fa-key"></i></div>
+                    				<p>Cuenta</p>
+                    			</div>
+                    		    <div class="f1-step">
+                    				<div class="f1-step-icon"><i class="fa fa-twitter"></i></div>
+                    				<p>Actividades</p>
+                    			</div>
+                    		</div>
+                    		
+                    		<fieldset>
+                    		    <h4>Cuentanos sobre ti:</h4>
+                    			<div class="form-group">
+                    			    <label class="sr-only" for="name">Nombre</label>
+                                    <input type="text" value="{{ old('name') }}" name="name" placeholder="Nombre" class="f1-first-name form-control" id="name">
                                 </div>
-                            </div>
-                            <div class="col-lg-6 d-flex align-items-center gradient-custom-2">
-                                <div class="text-white px-3 py-4 p-md-5 mx-md-4">
-                                    <h4 class="mb-4">We are more than just a company</h4>
-                                    <p class="small mb-0">Lorem ipsum dolor sit amet, consectetur adipisicing elit, sed
-                                        do eiusmod
-                                        tempor incididunt ut labore et dolore magna aliqua. Ut enim ad minim veniam,
-                                        quis nostrud
-                                        exercitation ullamco laboris nisi ut aliquip ex ea commodo consequat.</p>
+                                <div class="form-group">
+                                    <label class="sr-only" for="last_name">Apellidos</label>
+                                    <input type="text" value="{{ old('last_name') }}" name="last_name" placeholder="Apellidos" class="f1-last-name form-control" id="last_name">
                                 </div>
-                            </div>
-                        </div>
+                                <div class="form-group">
+                                    <label class="sr-only" for="age">Edad</label>
+                                    <input type="date" value="{{ old('age') }}" name="age" placeholder="Edad" class="f1-last-name form-control" id="age">
+                                </div>
+                                <div class="form-group">
+                                    <label class="sr-only" for="weight">Peso</label>
+                                    <input type="number" value="{{ old('weight') }}" name="weight" placeholder="Peso" class="f1-last-name form-control" id="last_name">
+                                </div>
+                                <div class="form-group">
+                                    <label class="sr-only" for="last_name">Altura</label>
+                                    <input type="number" value="{{ old('height') }}" name="height" placeholder="Altura" class="f1-last-name form-control" id="last_name">
+                                </div>
+                                <div class="form-group">
+                                    <label class="sr-only" for="gender">Genero</label>
+                                    <select id="gender" value="{{ old('gender') }}" class="f1-last-name form-control" name="gender" required>
+                                        <option value="masculino">Masculino</option>
+                                        <option value="femenino">Femenino</option>
+                                    </select>
+                                </div>
+                                <div class="form-group">
+                                    <label class="sr-only" for="phone_number">Telefono</label>
+                                    <input type="tel" value="{{ old('phone_number') }}" name="phone_number" placeholder="Numero de telefono" class="f1-last-name form-control" id="phone_number">
+                                </div>
+                                <div class="f1-buttons">
+                                    <button type="button" class="btn btn-next">Siguiente</button>
+                                </div>
+                            </fieldset>
+
+                            <fieldset>
+                                <h4>Crea tu cuenta</h4>
+                                <div class="form-group">
+                                    <label class="sr-only" for="f1-email">Correo</label>
+                                    <input type="text" value="{{ old('email') }}" name="email" placeholder="Correo" class="f1-email form-control" id="f1-email">
+                                </div>
+                                <div class="form-group">
+                                    <label class="sr-only" for="f1-password">Contraseña</label>
+                                    <input type="password" value="{{ old('password') }}" name="password" placeholder="Contraseña" class="f1-password form-control" id="f1-password">
+                                </div>
+                                <div class="form-group">
+                                    <label class="sr-only" for="f1-repeat-password">Confirmar Contraseña</label>
+                                    <input type="password" name="password_confirmation" placeholder="Confirmar Contraseña" 
+                                                        class="f1-repeat-password form-control" id="password_confirmation">
+                                </div>
+                                <div class="f1-buttons">
+                                    <button type="button" class="btn btn-previous">Regresar</button>
+                                    <button type="button" class="btn btn-next">Siguiente</button>
+                                </div>
+                            </fieldset>
+
+                            <fieldset>
+                                <h4>Reseña brevemente tus actividades cotidianas como a que hora te levantas, horarios de tus comidas, trabajas y duermes,
+                                asi como alimentos que no puedas consumir/disgusten o te provoquen alergia y por ultimo si tienes algun padecimiento, lesion,
+                                operacion o enfermedad cronico degenerativa.
+                            </h4>
+                                <div class="form-group">
+                                    <label class="sr-only" for="f1-about-yourself">Sobre ti</label>
+                                    <textarea name="activity_details" value="{{ old('activity_details') }}" placeholder="Cuentanos un poco de tu dia a dia" 
+                                    	                 class="f1-about-yourself form-control" id="activity_details"></textarea>
+                                </div>
+                                <div class="f1-buttons">
+                                    <button type="button" class="btn btn-previous">Regresar</button>
+                                    <button type="submit" class="btn btn-submit">Registrar</button>
+                                </div>
+                            </fieldset>
+                    	
+                    	</form>
                     </div>
->>>>>>> Stashed changes
                 </div>
+                    
             </div>
         </div>
-    </section>
-</body>
 
-<<<<<<< Updated upstream
+
+        <!-- Javascript -->
+        <script src="assets/js/jquery-1.11.1.min.js"></script>
+        <script src="assets/bootstrap/js/bootstrap.min.js"></script>
+        <script src="assets/js/jquery.backstretch.min.js"></script>
+        <script src="assets/js/retina-1.1.0.min.js"></script>
+        <script src="assets/js/scripts.js"></script>
+        
+        <!--[if lt IE 10]>
+            <script src="assets/js/placeholder.js"></script>
+        <![endif]-->
+
+    </body>
+
 </html>
-=======
-</html>
->>>>>>> Stashed changes

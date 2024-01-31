@@ -35,8 +35,8 @@
     <br>
     
     <label for="profile_picture">Foto</label>
-    @if(isset($user->profile_picture))
-    <img src="{{ asset('storage').'/'.$user->profile_picture }}" width="200" alt="">
+    @if(isset($user->avatar))
+    <img src="{{ asset('storage').'/'.$user->avatar }}" width="200" alt="">
     @endif
     <input type="file" name="profile_picture" id="profile_picture">
     <br>
