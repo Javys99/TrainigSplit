@@ -19,16 +19,14 @@ class User extends Authenticatable
      */
     protected $fillable = [
         'name',
-        'last_name',
         'email',
-        'gender',
         'password',
         'rol_id',
         'age',
         'weight',
-        'height',
-        'activity_details',
-        'avatar',
+        'health_details',
+        'food_details',
+        'activity_details'
     ];
 
     public function planes()

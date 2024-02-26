@@ -10,18 +10,18 @@
 
         <!-- CSS -->
         <link rel="stylesheet" href="http://fonts.googleapis.com/css?family=Roboto:400,100,300,500">
-        <link rel="stylesheet" href="assets/bootstrap/css/bootstrap.min.css">
-        <link rel="stylesheet" href="assets/font-awesome/css/font-awesome.min.css">
-		<link rel="stylesheet" href="assets/css/form-elements.css">
-        <link rel="stylesheet" href="assets/css/style.css">
+        <link rel="stylesheet" href="{{asset('assets/bootstrap/css/bootstrap.min.css')}}">
+        <link rel="stylesheet" href="{{asset('assets/font-awesome/css/font-awesome.min.css')}}">
+		<link rel="stylesheet" href="{{asset('assets/css/form-elements.css')}}">
+        <link rel="stylesheet" href="{{asset('assets/css/style.css')}}">
 
 
         <!-- Favicon and touch icons -->
-        <link rel="shortcut icon" href="assets/ico/favicon.png">
-        <link rel="apple-touch-icon-precomposed" sizes="144x144" href="assets/ico/apple-touch-icon-144-precomposed.png">
-        <link rel="apple-touch-icon-precomposed" sizes="114x114" href="assets/ico/apple-touch-icon-114-precomposed.png">
-        <link rel="apple-touch-icon-precomposed" sizes="72x72" href="assets/ico/apple-touch-icon-72-precomposed.png">
-        <link rel="apple-touch-icon-precomposed" href="assets/ico/apple-touch-icon-57-precomposed.png">
+        <link rel="shortcut icon" href="{{asset('assets/ico/favicon.png')}}">
+        <link rel="apple-touch-icon-precomposed" sizes="144x144" href="{{asset('assets/ico/apple-touch-icon-144-precomposed.png')}}">
+        <link rel="apple-touch-icon-precomposed" sizes="114x114" href="{{asset('assets/ico/apple-touch-icon-114-precomposed.png')}}">
+        <link rel="apple-touch-icon-precomposed" sizes="72x72" href="{{asset('assets/ico/apple-touch-icon-72-precomposed.png')}}">
+        <link rel="apple-touch-icon-precomposed" href="{{asset('assets/ico/apple-touch-icon-57-precomposed.png')}}">
 
     </head>
 
@@ -51,7 +51,7 @@
                     				<p>Cuenta</p>
                     			</div>
                     		    <div class="f1-step">
-                    				<div class="f1-step-icon"><i class="fa fa-twitter"></i></div>
+                    				<div class="f1-step-icon"><i class="fa fa-pencil-square-o"></i></div>
                     				<p>Actividades</p>
                     			</div>
                     		</div>
@@ -72,15 +72,15 @@
                                 </div>
                                 <div class="form-group">
                                     <label class="sr-only" for="weight">Peso</label>
-                                    <input type="number" value="{{ old('weight') }}" name="weight" placeholder="Peso" class="f1-last-name form-control" id="last_name">
+                                    <input type="number" value="{{ old('weight') }}" name="weight" placeholder="Peso" class="f1-last-name form-control" id="weight">
                                 </div>
                                 <div class="form-group">
-                                    <label class="sr-only" for="last_name">Altura</label>
-                                    <input type="number" value="{{ old('height') }}" name="height" placeholder="Altura" class="f1-last-name form-control" id="last_name">
+                                    <label class="sr-only" for="height">Altura</label>
+                                    <input type="number" value="{{ old('height') }}" name="height" placeholder="Altura" class="f1-last-name form-control" id="height">
                                 </div>
                                 <div class="form-group">
                                     <label class="sr-only" for="gender">Genero</label>
-                                    <select id="gender" value="{{ old('gender') }}" class="f1-last-name form-control" name="gender" required>
+                                    <select id="gender" value="{{ old('gender') }}" class="f1-last-name form-control" id="gender" name="gender" required>
                                         <option value="masculino">Masculino</option>
                                         <option value="femenino">Femenino</option>
                                     </select>
@@ -140,11 +140,11 @@
 
 
         <!-- Javascript -->
-        <script src="assets/js/jquery-1.11.1.min.js"></script>
-        <script src="assets/bootstrap/js/bootstrap.min.js"></script>
-        <script src="assets/js/jquery.backstretch.min.js"></script>
-        <script src="assets/js/retina-1.1.0.min.js"></script>
-        <script src="assets/js/scripts.js"></script>
+        <script src="{{asset('assets/js/jquery-1.11.1.min.js')}}"></script>
+        <script src="{{asset('assets/bootstrap/js/bootstrap.min.js')}}"></script>
+        <script src="{{asset('assets/js/jquery.backstretch.min.js')}}"></script>
+        <script src="{{asset('assets/js/retina-1.1.0.min.js')}}"></script>
+        <script src="{{asset('assets/js/scripts.js')}}"></script>
         
         <!--[if lt IE 10]>
             <script src="assets/js/placeholder.js"></script>

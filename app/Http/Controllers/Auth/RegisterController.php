@@ -4,8 +4,10 @@ namespace App\Http\Controllers\Auth;
 
 use App\Http\Controllers\Controller;
 use App\Models\User;
+use Illuminate\Auth\Events\Registered;
 use Illuminate\Foundation\Auth\RegistersUsers;
 use Illuminate\Support\Facades\Hash;
+use Illuminate\Support\Facades\Request;
 use Illuminate\Support\Facades\Validator;
 
 class RegisterController extends Controller
@@ -58,7 +60,6 @@ class RegisterController extends Controller
             'age' => ['required', 'date', 'max:255'],
             'activity_details' => ['required', 'string', 'max:255'],
             'phone_number' => ['required', 'integer', 'max:255'],
-            'avatar' => ['required', 'string', 'max:255'],
             'password' => ['required', 'string', 'min:8', 'confirmed'],
         ]);
     }
@@ -84,12 +85,9 @@ class RegisterController extends Controller
             'password' => Hash::make($data['password']),
         ]);
 
-        if (isset($data['avatar'])) {
-            $avatarPath = $data['avatar']->store('avatars', 'public');
-            $user->avatar = $avatarPath;
-            $user->save();
-        }
     
         return $user;
     }
+   
+    
 }
