@@ -3,7 +3,7 @@
         <thead class="thead-light">
             <tr>
                 <th>#</th>
-               
+                <th>Foto</th>
                 <th>Nombre</th>
                 <th>Apellidos</th>
                 <th>Correo</th>
