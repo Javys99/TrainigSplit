@@ -1,16 +1,13 @@
 <x-layouts.master-layout title="Clientes">
-    <div class="d-flex justify-content-end " style="margin-right:1em;">
-        <a href="{{ route('users.create') }}" class="btn btn-success">Agregar Cliente</a>
-    </div>
     <table class="table table-light">
         <thead class="thead-light">
             <tr>
                 <th>#</th>
                 <th>Foto</th>
                 <th>Nombre</th>
-                <th>Apellido Paterno</th>
-                <th>Apellido Materno</th>
+                <th>Apellidos</th>
                 <th>Correo</th>
+                <th>Telefono</th>
                 <th>Acciones</th>
             </tr>
         </thead>
@@ -28,8 +25,8 @@
     
                 <td>{{ $user->name }}</td>
                 <td>{{ $user->last_name }}</td>
-                <td>{{ $user->middle_name }}</td>
                 <td>{{ $user->email }}</td>
+                <td>{{ $user->phone_number }}</td>
                 <td>
                 
                 <a href="{{ route('users.show', $user->id) }}">

@@ -30,14 +30,14 @@ class UserController extends Controller
         $campos=[
             'name'=>'required|string|max:100',
             'last_name'=>'required|string|max:100',
-            'middle_name'=>'required|string|max:100',
+            'gender' => 'required|in:masculino,femenino,otro',
             'email'=>'required|email',
-            'profile_picture'=>'required|max:10000|mimes:jpeg,png,jpg',
+            'avatar'=>'required|max:10000|mimes:jpeg,png,jpg',
             
         ];
         $mensaje=[
             'required'=>'El :attribute es requerido',
-            'profile_picture.required'=>'La foto es requerida'
+            'avatar.required'=>'La foto es requerida'
 
         ];
 
@@ -45,8 +45,8 @@ class UserController extends Controller
     
     $datosCliente = $request->except('_token');
 
-    if($request->hasFile('profile_picture')){
-        $datosCliente['profile_picture']=$request->file('profile_picture')->store('uploads','public');
+    if($request->hasFile('avatar')){
+        $datosCliente['avatar']=$request->file('avatar')->store('uploads','public');
     }
 
     User::create($datosCliente);
