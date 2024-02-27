@@ -5,13 +5,31 @@ namespace App\Http\Controllers;
 use App\Models\User;
 use Illuminate\Http\Request;
 use Illuminate\Support\Facades\Storage;
+use App\Traits\Helpers\ResponseTrait;
 
 class UserController extends Controller
 {
+    use ResponseTrait;
+
     public function index()
     {
-        $users = User::all();
-        return view('users.index')->with('users', $users);
+        try {
+            $users = User::all();
+            return $this->customResponse([
+                'view' => 'users.index',
+                'data' => $users,
+                'message' => 'Listado de usuarios',
+                'success' => true,
+                'status' => 200
+            ]);
+        } catch (\Exception $e) {
+            return $this->customResponse([
+                'message' => "No se pudo obtener el listado de usuarios",
+                'exception' => $e->getMessage(),
+                'success' => false,
+                'status' => 500
+            ]);
+        }
     }
 
     /**

@@ -23,3 +23,5 @@ Route::get('/', function () {
 Route::get('/dashboard', [HomeController::class,'dashboard'])->name('dashboard.dashboard');
 Auth::routes();
 Route::get('/home', [App\Http\Controllers\HomeController::class, 'index'])->name('home');
+
+Route::get('/test-trait/{num}', [HomeController::class,'testTrait'])->name('test-trait');
