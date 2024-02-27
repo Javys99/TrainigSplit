@@ -69,6 +69,7 @@
                                 <input type="text" value="{{ old('last_name') }}" name="last_name"
                                     placeholder="Apellidos" class="f1-last-name form-control" id="last_name">
                             </div>
+                           
                             <div class="form-group">
                                 <label class="sr-only" for="age">Edad</label>
                                 <input type="date" value="{{ old('age') }}" name="age" placeholder="Edad"

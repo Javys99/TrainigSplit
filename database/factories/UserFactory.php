@@ -23,12 +23,21 @@ class UserFactory extends Factory
      */
     public function definition(): array
     {
+        $prefijos = (["Torres", "Garcia", "Hernandez", "Martinez", "Villeda", "Lara", "Antares"]);
+        $apellidos = $this->faker->randomElement($prefijos);
         return [
             'name' => fake()->name(),
+            'last_name' => $apellidos,
             'email' => fake()->unique()->safeEmail(),
-            'email_verified_at' => now(),
+            'gender' => fake()->name(),
+            'rol_id'  => fake()->randomDigit(),
+            'age' => fake()->date(),
+            'height' => fake()->randomDigit(),
+            'weight' => fake()->randomDigit(),
+            'activity_details'=> fake()->text(),
+            'phone_number' => fake()->phoneNumber(),
             'password' => static::$password ??= Hash::make('password'),
-            'remember_token' => Str::random(10),
+            
         ];
     }
 

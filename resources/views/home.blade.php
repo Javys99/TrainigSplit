@@ -1,11 +1,5 @@
-<x-layouts.master-layout title="HOLA  {{ auth()->user()->name }}" description="MUY BIEN Y TU?">
+<x-layouts.master-layout title="Hola Bienvenido a Kintsugi Strength Systems  {{ auth()->user()->name }}" >
 
-    <center>
-        {{-- logout btn --}}
-        <form action="{{ route('logout') }}" method="POST">
-            @csrf
-            <button type="submit" class="btn btn-danger">Cerrar sesión</button>
-        </form>
-    </center>
+    
 
 </x-layouts.master-layout>
